@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title></title>
+		<link rel="stylesheet" href="../layui/css/layui.css" media="all">
+		<script type="text/javascript" src="../layui/layui.js"></script>
+	</head>
+	<body class="layui-layout-body">
+		<form class="layui-form" action="" lay-filter="example">
+		  <div class="layui-form-item">
+		    <label class="layui-form-label">名字</label>
+		    <div class="layui-input-block">
+		      <input name="username" class="layui-input" type="text" placeholder="请输入名字" autocomplete="off" lay-verify="title">
+		    </div>
+		  </div>
+		  <div class="layui-form-item">
+		    <label class="layui-form-label">地址</label>
+		    <div class="layui-input-block">
+		      <input name="address" class="layui-input" type="text" placeholder="请输入标题" autocomplete="off" lay-verify="title">
+		    </div>
+		  </div>
+		  <div class="layui-form-item">
+		    <label class="layui-form-label">密码框</label>
+		    <div class="layui-input-block">
+		      <input name="password" class="layui-input" type="password" placeholder="请输入密码" autocomplete="off">
+		    </div>
+		  </div>
+		 
+		  <div class="layui-form-item">
+		    <div class="layui-input-block">
+		      <button class="layui-btn" type="submit" lay-filter="demo1" lay-submit="">立即提交</button>
+		    </div>
+		  </div>
+		</form>
+		
+		<script>
+		layui.use(['form', 'layedit', 'laydate'], function(){
+		  var form = layui.form
+		  ,layer = layui.layer
+		  ,layedit = layui.layedit
+		  ,laydate = layui.laydate;
+		  
+		  //监听提交
+		  form.on('submit(demo1)', function(data){
+		    /* layer.alert(JSON.stringify(data.field), {
+		      title: '最终的提交信息'
+		    })
+		    return false; */
+			console.log("asdasdasdasdasdas");
+			layui.use('jquery', function(){
+				var $ = layui.$ //重点处
+				  var url = 'http://localhost:8080/test/add?username=大蛇皮&password=123456788&address=四川';
+				  console.log(url);
+				  //后面就跟你平时使用jQuery一样
+				  $.ajax({
+				    type: 'GET',
+					contentType: "application/json;charset=UTF-8",
+					//127.0.0.1:8080/test/add?username=大蛇皮&password=123456788&address=四川
+				    url: url,
+				    //data: data,
+				    success:function(res){
+				    	console.log("asdasdasdasdasdas");
+				    }
+				  });
+				});
+			});
+		 
+		  
+		});
+		</script>
+		
+	</body>
+</html>
+
